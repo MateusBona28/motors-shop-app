@@ -27,7 +27,6 @@ const Login = () => {
 
   const sendData = () => {
     if (inputUser && inputPassword !== "") {
-      // console.log(inputUser, inputPassword)
       const Login = new Promise((resolve, reject) =>
         API.post("/login", {
           email: inputUser,

@@ -46,7 +46,6 @@ const CardAnnouncement = () => {
     API.get(`/announcements/${id}`)
       .then((resp) => {
         setAnnouncementDetail(resp.data);
-        console.log(resp.data);
       })
       .catch((err) => {
         console.log(err);
