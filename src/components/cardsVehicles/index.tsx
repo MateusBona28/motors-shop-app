@@ -34,7 +34,6 @@ export const CardVehicle = ({
   onOwnProfile,
   onHome,
 }: IVehicleProps) => {
-  console.log(onOwnProfile, onHome);
   const activeImage = vehicle.images?.filter((image) => image.type === "COVER");
   const historico = useHistory();
   const { userProfileView } = useContext<any>(UserContext);
