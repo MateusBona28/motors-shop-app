@@ -44,7 +44,7 @@ export const StyledFooterDiv = styled.footer`
     flex-direction: column;
     justify-content: space-between;
     
-    width: 100%;
+    width: 100vw;
 
     padding: 50px;
 

@@ -5,10 +5,25 @@ export const Ulstyled = styled.ul`
   justify-content: flex-start;
   align-items: flex-start;
   overflow-x: auto;
-  scroll-behavior: smooth;
+  height: 380px;
   gap: 2rem;
   width: 90vw;
   gap: 1.25rem;
+`;
+
+export const UlstyledAuction = styled.ul`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: auto;
+  height: 400px;
+  gap: 2rem;
+  width: 90vw;
+  gap: 1.25rem;
+
+  @media screen and (max-width: 450px){
+    height: 500px;
+  }
 `;
 
 export const Vitrine = styled.div`

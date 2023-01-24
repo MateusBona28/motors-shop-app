@@ -3,7 +3,7 @@ import styled from "styled-components";
 const MainDashboard = styled.main`
   display: flex;
   flex-direction: column;
-  background-color: #fbf8f2;
+  background-color: var(--whiteFixed);
   align-items: center;
   width: 100vw;
   min-height: 100vh;

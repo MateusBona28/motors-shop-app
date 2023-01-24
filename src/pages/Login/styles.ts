@@ -6,7 +6,7 @@ export const FormStyled = styled.form`
   justify-content: center;
   background-color: var(--whiteFixed);
   border-radius: 4px;
-  width: 25.75rem;
+  width: 90%;
   padding: 2.75rem 3rem;
   gap: 0.625rem;
   position: relative;
@@ -103,14 +103,17 @@ export const FormStyled = styled.form`
 
 export const Container = styled.main`
   width: 100vw;
+  height: fit-content;
 
-  min-height: 85vh;
+  flex-grow: 1;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: var(--grey8);
+
+  padding: 10px;
 `;
 
 

@@ -1,5 +1,5 @@
 import { CardVehicle } from "../cardsVehicles";
-import { Ulstyled, Vitrine, Carrousel } from "./styles";
+import { Ulstyled, Vitrine, Carrousel, UlstyledAuction } from "./styles";
 import { useContext, useRef, useState } from "react";
 import { AnnouncementsContext } from "../../contexts/announcements";
 import { IVehicle } from "../../contexts/announcements";
@@ -24,7 +24,7 @@ export const CardsList = () => {
       {id === undefined && (
         <Vitrine>
           <h1 id='auctions'>Leilão</h1>
-          <Ulstyled ref={carousel1}>
+          <UlstyledAuction ref={carousel1}>
             {auctions.length > 0 ? (
                 auctions?.map((car: IVehicle, index: number) => (
                   <AuctionCard
@@ -37,7 +37,7 @@ export const CardsList = () => {
               ) : (
                 <NoAnnouncement phrase="Nenhum leilão ocorrendo no momento" />
             )}
-          </Ulstyled>
+          </UlstyledAuction>
 
           <h1 id="Carros">Carros</h1>
 

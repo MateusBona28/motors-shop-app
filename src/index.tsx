@@ -7,6 +7,7 @@ import { AnnouncementsProvider } from "./contexts/announcements";
 import { UserProvider } from "./contexts/user";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import { ModalsProvider } from "./contexts/editModals";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -17,7 +18,9 @@ root.render(
     <BrowserRouter>
       <AnnouncementsProvider>
         <UserProvider>
+        <ModalsProvider>
           <App />
+        </ModalsProvider>
         </UserProvider>
       </AnnouncementsProvider>
     </BrowserRouter>
