@@ -12,6 +12,7 @@ import { Box, MenuButton, MenuModal, Modal } from "./styles";
 import { UserContext } from "../../contexts/user";
 import { StyledHeaderButton, StyledHeaderLoginButton } from "../Button/styles";
 import { BuyerBtn } from "../../pages/Register/styles";
+import { ModalsContext } from "../../contexts/editModals";
 
 interface IHeaderProps {
   type: string;
@@ -22,6 +23,8 @@ const Header = ({ type }: IHeaderProps) => {
   const [modal, setModal] = useState(false);
   const [open, setOpen] = useState<boolean>(false);
   const [open2, setOpen2] = useState<boolean>(false);
+
+  const { handleOpenEditProfile, handleOpenEditAddress } = useContext<any>(ModalsContext);
 
   const { setUser, setToken, token, user } = useContext<any>(UserContext);
 
@@ -37,24 +40,6 @@ const Header = ({ type }: IHeaderProps) => {
   const home = () => {
     historico.push("")
   }
-
-  const handleOpen = (e: any) => {
-    if (
-      e.target.title === "formEditProfile" ||
-      e.target.title === "buttonOpenEditProfile"
-    ) {
-      setOpen(!open);
-    }
-  };
-
-  const handleOpen2 = (e: any) => {
-    if (
-      e.target.title === "formEditAdress" ||
-      e.target.title === "buttonOpenEditAdress"
-    ) {
-      setOpen2(!open2);
-    }
-  };
 
   const handleLogout = () => {
     setUser({})
@@ -138,44 +123,21 @@ const Header = ({ type }: IHeaderProps) => {
                   <div className="divisionNavModal">
                     <Button
                       title="buttonOpenEditProfile"
-                      onClick={(e: any) => {
-                        handleOpen(e);
+                      onClick={() => {
+                        handleOpenEditProfile()
                       }}
                     >
                       Editar Perfil
                     </Button>
-                    {open ? (
-                      <ModalFundo
-                        title="formEditProfile"
-                        onClick={(e) => {
-                          handleOpen(e);
-                        }}
-                      >
-                        <FormPerfil open={open} setOpen={setOpen} />
-                      </ModalFundo>
-                    ) : (
-                      ""
-                    )}
+                    
                     <Button
                       title="buttonOpenEditAdress"
                       onClick={(e: any) => {
-                        handleOpen2(e);
+                        handleOpenEditAddress()
                       }}
                     >
                       Editar Endereço
                     </Button>
-                    {open2 ? (
-                      <ModalFundo
-                        title="formEditAdress"
-                        onClick={(e) => {
-                          handleOpen2(e);
-                        }}
-                      >
-                        <FormEndereco open={open2} setOpen={setOpen2} />
-                      </ModalFundo>
-                    ) : (
-                      ""
-                    )}
                     <Button onClick={goToDashboard}>{user.isAdvertiser && "Meus Anúncios"}</Button>
                     <Button onClick={handleLogout}>Sair</Button>
                   </div>

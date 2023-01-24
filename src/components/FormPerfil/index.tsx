@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import API from "../../api";
+import { ModalsContext } from "../../contexts/editModals";
 import { UserContext } from "../../contexts/user";
 import { FormPattern } from "../FormPadrão/styles";
 import {
@@ -16,12 +17,8 @@ import {
   InputDate,
 } from "./styles";
 
-interface IProps {
-  open: boolean
-  setOpen: Function
-}
 
-const FormPerfil = ({ open, setOpen }: IProps) => {
+const FormPerfil = () => {
   const {
     register,
     handleSubmit,
@@ -29,6 +26,11 @@ const FormPerfil = ({ open, setOpen }: IProps) => {
   } = useForm();
 
   const { setUser, setToken, token, user } = useContext<any>(UserContext);
+
+  const { 
+    handleCloseEditProfile,
+    handleCloseAfterRequestSuccess
+  } = useContext<any>(ModalsContext);
 
   const onSubmit = (data: any) => {
     data.birthdate = data.birthdate.split("/").reverse().join("-")
@@ -42,7 +44,7 @@ const FormPerfil = ({ open, setOpen }: IProps) => {
       API.get(`/users/${user.id}`)
       .then((res) => {
         setUser(res.data)
-        setOpen(!open)
+        handleCloseAfterRequestSuccess()
       })
     })
     .catch((err) => {
@@ -55,8 +57,8 @@ const FormPerfil = ({ open, setOpen }: IProps) => {
       <HeaderForm>
         <TitleForm>Editar Perfil</TitleForm>
         <ButtonClosed
-          onClick={() => {
-            setOpen(!open)
+          onClick={(e) => {
+            handleCloseEditProfile(e)
           }}
         >
           X
@@ -99,7 +101,7 @@ const FormPerfil = ({ open, setOpen }: IProps) => {
       />
       
       <FooterForm>
-        <ButtonFooter color="color" type="button" onClick={() => {setOpen(!open)}}>Cancelar</ButtonFooter>
+        <ButtonFooter title="cancelEditProfile" color="color" type="button" onClick={() => {handleCloseEditProfile()}}>Cancelar</ButtonFooter>
         <ButtonFooter type="submit">Salvar Alterações</ButtonFooter>
       </FooterForm>
     </FormPattern>

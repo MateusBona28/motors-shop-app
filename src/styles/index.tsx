@@ -80,6 +80,34 @@ export const GlobalStyle = createGlobalStyle`
         display: none;
         }
     }
+
+    ::-webkit-scrollbar-track {
+        background-color: #F4F4F4;
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 10px;
+        background: #F4F4F4;
+        border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #dad7d7;
+        border-radius: 8px;
+    }
+
+    @media screen and (max-width: 450px){
+        ::-webkit-scrollbar-track {
+            background-color: #F4F4F4;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 3px;
+            background: #F4F4F4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dad7d7;
+        }
+    }
 `
 
 interface Props {

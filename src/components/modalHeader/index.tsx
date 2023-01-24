@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Modal, ModalFundo } from "./styles";
 import { UserContext } from "../../contexts/user";
+import { ModalsContext } from "../../contexts/editModals";
 
 interface IModalProps {
   type: string;
@@ -12,28 +13,13 @@ interface IModalProps {
 
 const ModalHeader = ({ type }: IModalProps) => {
   const historico = useHistory();
-  const [open, setOpen] = useState<boolean>(false);
-  const [open2, setOpen2] = useState<boolean>(false);
 
   const { setUser, setToken, token, user } = useContext<any>(UserContext);
 
-  const handleOpen = (e: any) => {
-    if (
-      e.target.title === "formEditProfile" ||
-      e.target.title === "buttonOpenEditProfile"
-    ) {
-      setOpen(!open);
-    }
-  };
-
-  const handleOpen2 = (e: any) => {
-    if (
-      e.target.title === "formEditAdress" ||
-      e.target.title === "buttonOpenEditAdress"
-    ) {
-      setOpen2(!open2);
-    }
-  };
+  const { 
+    handleOpenEditProfile,
+    handleOpenEditAddress
+  } = useContext<any>(ModalsContext);
 
   const login = () => {
     historico.push("/login");
@@ -86,43 +72,19 @@ const ModalHeader = ({ type }: IModalProps) => {
               <Button
                 title="buttonOpenEditProfile"
                 onClick={(e: any) => {
-                  handleOpen(e);
+                  handleOpenEditProfile()
                 }}
               >
                 Editar Perfil
               </Button>
-              {open ? (
-                <ModalFundo
-                  title="formEditProfile"
-                  onClick={(e) => {
-                    handleOpen(e);
-                  }}
-                >
-                  <FormPerfil open={open} setOpen={setOpen} />
-                </ModalFundo>
-              ) : (
-                ""
-              )}
               <Button
-                title="buttonOpenEditAdress"
+                title="buttonOpenEditAddress"
                 onClick={(e: any) => {
-                  handleOpen2(e);
+                  handleOpenEditAddress()
                 }}
               >
                 Editar Endereço
               </Button>
-              {open2 ? (
-                <ModalFundo
-                  title="formEditAdress"
-                  onClick={(e) => {
-                    handleOpen2(e);
-                  }}
-                >
-                  <FormEndereco open={open2} setOpen={setOpen2} />
-                </ModalFundo>
-              ) : (
-                ""
-              )}
               <Button onClick={goToDashboard} >Meus Anúncios</Button>
               <Button onClick={handleLogout} >Sair</Button>
             </div>

@@ -1,8 +1,10 @@
+import { title } from "process";
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import API from "../../api";
 import { User } from "../../contexts/announcements";
+import { ModalsContext } from "../../contexts/editModals";
 import { UserContext } from "../../contexts/user";
 import { FormPattern } from "../FormPadrão/styles";
 import {
@@ -18,16 +20,18 @@ import {
   BoxAddress2,
 } from "./styles";
 
-interface IProps {
-  open: boolean
-  setOpen: Function
-}
+
 interface contextUser {
   user: User;
   token: string;
 }
-const FormEndereco = ({ open, setOpen }: IProps) => {
+const FormEndereco = () => {
   const { user, token }: contextUser = useContext<any>(UserContext);
+
+  const { 
+    handleCloseEditAddress,
+    handleCloseAfterRequestSuccess
+  } = useContext<any>(ModalsContext);
 
   const [cep, setCep] = useState(user.address.cep);
   const [estado, setEstado] = useState(user.address.state);
@@ -78,8 +82,9 @@ const FormEndereco = ({ open, setOpen }: IProps) => {
       <HeaderForm>
         <TitleForm>Editar Endereço</TitleForm>
         <ButtonClosed
+          title="cancelEditAddress"
           onClick={(e) => {
-            setOpen(!open)
+            handleCloseEditAddress(e)
           }}
         >
           X
@@ -137,7 +142,7 @@ const FormEndereco = ({ open, setOpen }: IProps) => {
       </BoxAddress2>
 
       <FooterForm>
-        <ButtonFooter color="color" onClick={() => {setOpen(!open)}}>Cancelar</ButtonFooter>
+        <ButtonFooter title="buttonOpenEditAddress" color="color" onClick={() => {handleCloseEditAddress()}}>Cancelar</ButtonFooter>
         <ButtonFooter onClick={sendDataPatchAddress}>
           Salvar Alterações
         </ButtonFooter>

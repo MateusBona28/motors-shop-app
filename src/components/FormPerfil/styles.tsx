@@ -84,6 +84,7 @@ export const FooterForm = styled.div`
   flex-direction: row;
   width: 100%;
   gap: 10px;
+  margin-top: 15px;
 `;
 
 export const ButtonFooter = styled.button`

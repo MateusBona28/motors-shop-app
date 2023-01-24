@@ -8,7 +8,6 @@ export const Modal = styled.div`
   background-color: var(--whiteFixed);
   top: 68px;
   width: 100%;
-  max-width: 400px;
   right: 3px;
   border-radius: 5px;
   padding: 10px !important;
@@ -73,6 +72,8 @@ export const Modal = styled.div`
         padding: 8px;
         font-weight: 600;
         background-color: transparent;
+
+        border: solid 1.5px var(--grey4);
       }
     }
   }
@@ -83,7 +84,7 @@ export const ModalFundo = styled.div`
   position: fixed;
   top: 0;
   width: 100vw;
-  height: 80vh !important;
+  height: 100vh !important;
   left: 0px;
   z-index: 1000;
   display: flex;

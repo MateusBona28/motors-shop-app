@@ -94,11 +94,13 @@ export const Box = styled.header`
           color: var(--grey0);
           background-color: var(--whiteFixed);
           border-radius: 4px;
+          border: solid 1.5px var(--grey4);
           transition: 0.4s;
 
           :hover {
             cursor: pointer;
             background-color: var(--grey0);
+            border: solid 1.5px var(--grey0);
             color: var(--whiteFixed);
             transition: 0.4s;
           }
