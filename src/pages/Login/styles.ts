@@ -6,7 +6,7 @@ export const FormStyled = styled.form`
   justify-content: center;
   background-color: var(--whiteFixed);
   border-radius: 4px;
-  width: 90%;
+  width: 30%;
   padding: 2.75rem 3rem;
   gap: 0.625rem;
   position: relative;
