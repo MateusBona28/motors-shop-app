@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom";
 import { Review, User } from "../../contexts/announcements";
 import { UserContext } from "../../contexts/user";
 import { useContext, useState } from "react";
-import { ModalFundo } from "../ModalFundo/styles";
 import FormEdit from "../FormEdit";
+import { ModalFundo } from "../ModalFundo/styles";
 export interface IVehicleProps {
   vehicle: {
     id: string;

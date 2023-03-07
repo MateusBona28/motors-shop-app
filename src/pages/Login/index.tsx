@@ -66,7 +66,7 @@ const Login = () => {
       <Container>
         <FormStyled onSubmit={(e) => e.preventDefault()}>
           <h1>Login</h1>
-          <label htmlFor="">Usuário</label>
+          <label htmlFor="">Email</label>
           <input
             type="text"
             placeholder="Digitar usuário"
